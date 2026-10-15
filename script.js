@@ -731,3 +731,42 @@ clickMessageStyle.textContent = `
 `;
 
 document.head.appendChild(clickMessageStyle);
+
+
+/* =========================================
+   SMOOTH SWEET 17 LOADING CONTROLLER
+========================================= */
+
+(function () {
+    const loader = document.getElementById("cute-loader");
+
+    if (!loader) return;
+
+    const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    function startLoadingAnimation() {
+        loader.classList.add("is-animating");
+
+        // Animasi angka selesai pada sekitar 3.15 detik.
+        // Loading ditahan sebentar agar angka 17 terlihat.
+        const totalDuration = reducedMotion ? 700 : 3900;
+
+        window.setTimeout(function () {
+            loader.classList.add("loader-done");
+
+            window.setTimeout(function () {
+                loader.remove();
+            }, 700);
+        }, totalDuration);
+    }
+
+    if (document.readyState === "complete") {
+        startLoadingAnimation();
+    } else {
+        window.addEventListener("load", startLoadingAnimation, {
+            once: true
+        });
+    }
+})();
