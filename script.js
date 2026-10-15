@@ -358,3 +358,376 @@ backgroundMusic.addEventListener("error", () => {
     isMusicPlaying = false;
     musicButton.classList.remove("playing");
 });
+
+/* =========================================
+   BILU'S LITTLE MAGIC ♡
+   Confetti, floating hearts & sparkles
+========================================= */
+
+const magicStyle = document.createElement("style");
+
+magicStyle.textContent = `
+    .bilu-confetti {
+        position: fixed;
+        top: -25px;
+        z-index: 9999;
+        pointer-events: none;
+        animation: biluFall var(--duration) linear forwards;
+    }
+
+    @keyframes biluFall {
+        0% {
+            transform: translate3d(0, -5vh, 0) rotate(0deg);
+            opacity: 0;
+        }
+        10% { opacity: 1; }
+        100% {
+            transform: translate3d(var(--drift), 110vh, 0)
+                       rotate(var(--rotation));
+            opacity: 0;
+        }
+    }
+
+    .bilu-float {
+        position: fixed;
+        bottom: -35px;
+        z-index: 2;
+        pointer-events: none;
+        animation: biluFloat var(--duration) ease-in forwards;
+    }
+
+    @keyframes biluFloat {
+        0% {
+            transform: translateY(0) rotate(0deg) scale(.7);
+            opacity: 0;
+        }
+        15% { opacity: .8; }
+        80% { opacity: .65; }
+        100% {
+            transform: translateY(-110vh) rotate(35deg) scale(1.3);
+            opacity: 0;
+        }
+    }
+
+    .bilu-sparkle {
+        position: fixed;
+        z-index: 10000;
+        pointer-events: none;
+        animation: biluTwinkle .9s ease-out forwards;
+    }
+
+    @keyframes biluTwinkle {
+        0% {
+            opacity: 0;
+            transform: scale(.2) rotate(0deg);
+        }
+        35% {
+            opacity: 1;
+            transform: scale(1.2) rotate(35deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-25px) scale(.5) rotate(80deg);
+        }
+    }
+
+    .magic-click {
+        animation: biluClick .35s ease;
+    }
+
+    @keyframes biluClick {
+        50% { transform: scale(1.08); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .bilu-confetti,
+        .bilu-float,
+        .bilu-sparkle {
+            animation-duration: 1ms !important;
+        }
+    }
+`;
+
+document.head.appendChild(magicStyle);
+
+
+/* 1. CONFETTI HATI */
+
+function biluConfetti(amount = 85) {
+    const colors = [
+        "#83abc9", "#b9dced", "#f3a6b8",
+        "#f5d58b", "#e8c5d4", "#fffaf3"
+    ];
+
+    for (let i = 0; i < amount; i++) {
+        const piece = document.createElement("span");
+
+        piece.className = "bilu-confetti";
+        piece.textContent = Math.random() > .55 ? "♡" : "✦";
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.color =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.fontSize = Math.random() * 13 + 9 + "px";
+        piece.style.setProperty(
+            "--duration",
+            Math.random() * 2 + 2 + "s"
+        );
+        piece.style.setProperty(
+            "--drift",
+            (Math.random() - .5) * 180 + "px"
+        );
+        piece.style.setProperty(
+            "--rotation",
+            Math.random() * 600 + "deg"
+        );
+
+        document.body.appendChild(piece);
+
+        piece.addEventListener("animationend", () => {
+            piece.remove();
+        }, { once: true });
+    }
+}
+
+
+/* 2. HATI KECIL MELAYANG */
+
+function biluFloatingHearts(amount = 12) {
+    const hearts = ["♡", "♥", "୨୧", "✧"];
+    const colors = ["#e8a6b9", "#83abc9", "#d5b46b"];
+
+    for (let i = 0; i < amount; i++) {
+        const heart = document.createElement("span");
+
+        heart.className = "bilu-float";
+        heart.textContent =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.color =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        heart.style.fontSize = Math.random() * 17 + 12 + "px";
+        heart.style.setProperty(
+            "--duration",
+            Math.random() * 5 + 6 + "s"
+        );
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener("animationend", () => {
+            heart.remove();
+        }, { once: true });
+    }
+}
+
+
+/* 3. SPARKLE SAAT MOUSE BERGERAK */
+
+let lastSparkle = 0;
+
+document.addEventListener("pointermove", event => {
+    if (event.pointerType === "touch") return;
+    if (Date.now() - lastSparkle < 110) return;
+
+    lastSparkle = Date.now();
+
+    if (Math.random() > .55) return;
+
+    const sparkle = document.createElement("span");
+    const symbols = ["✦", "✧", "⋆", "♡"];
+
+    sparkle.className = "bilu-sparkle";
+    sparkle.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    sparkle.style.left = event.clientX + "px";
+    sparkle.style.top = event.clientY + "px";
+    sparkle.style.color = ["#83abc9", "#e8a6b9", "#d5b46b"][
+        Math.floor(Math.random() * 3)
+    ];
+    sparkle.style.fontSize = Math.random() * 9 + 12 + "px";
+
+    document.body.appendChild(sparkle);
+
+    sparkle.addEventListener("animationend", () => {
+        sparkle.remove();
+    }, { once: true });
+});
+
+
+/* 4. EFEK SAAT KLIK TOMBOL */
+
+document.addEventListener("click", event => {
+    const button = event.target.closest(
+        "button, .brand, .page-dot"
+    );
+
+    if (!button) return;
+
+    button.classList.remove("magic-click");
+    void button.offsetWidth;
+    button.classList.add("magic-click");
+
+    setTimeout(() => {
+        button.classList.remove("magic-click");
+    }, 400);
+});
+
+
+/* 5. KEJUTAN KONFETI SAAT PIN BENAR */
+
+const magicStoryObserver = new MutationObserver(() => {
+    if (!storyApp.classList.contains("hidden")) {
+        biluConfetti(110);
+        magicStoryObserver.disconnect();
+    }
+});
+
+magicStoryObserver.observe(storyApp, {
+    attributes: true,
+    attributeFilter: ["class"]
+});
+
+
+/* 6. HATI MELAYANG PERLAHAN */
+
+let heartInterval = null;
+
+function startBiluHearts() {
+    if (heartInterval) return;
+
+    heartInterval = setInterval(() => {
+        if (!storyApp.classList.contains("hidden")) {
+            biluFloatingHearts(2);
+        }
+    }, 4500);
+}
+
+function stopBiluHearts() {
+    if (heartInterval) {
+        clearInterval(heartInterval);
+        heartInterval = null;
+    }
+}
+
+startBiluHearts();
+
+document.querySelectorAll(".story-page img").forEach((photo) => {
+    photo.addEventListener("click", (event) => {
+        const heart = document.createElement("span");
+
+        heart.textContent = ["♡", "♥", "୨୧", "✧"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.cssText = `
+            position: fixed;
+            left: ${event.clientX}px;
+            top: ${event.clientY}px;
+            z-index: 9999;
+            pointer-events: none;
+            color: #d889a7;
+            font-size: 24px;
+            animation: heartPop 900ms ease-out forwards;
+        `;
+
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 950);
+    });
+});
+
+const heartStyle = document.createElement("style");
+heartStyle.textContent = `
+    @keyframes heartPop {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, 0) scale(0.5) rotate(-10deg);
+        }
+        30% {
+            opacity: 1;
+            transform: translate(-50%, -15px) scale(1.2) rotate(10deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -65px) scale(0.8) rotate(-15deg);
+        }
+    }
+`;
+document.head.appendChild(heartStyle);
+
+/* ♡ ROMANTIC WORDS ON CLICK */
+
+const clickMessages = [
+    "mwaah",
+    "i love you sayang",
+    "aku jatuh suka~",
+    "cayang bebecuu",
+   
+];
+
+document.addEventListener("click", (event) => {
+    // Abaikan klik pada elemen input agar tidak mengganggu PIN
+    if (event.target.closest("input, textarea, select")) return;
+
+    const note = document.createElement("span");
+    note.className = "click-love-note";
+    note.textContent =
+        clickMessages[Math.floor(Math.random() * clickMessages.length)];
+
+    note.style.left = `${event.clientX}px`;
+    note.style.top = `${event.clientY - 10}px`;
+
+    document.body.appendChild(note);
+
+    setTimeout(() => note.remove(), 2400);
+});
+
+/* STYLE TULISAN KLIK */
+const clickMessageStyle = document.createElement("style");
+
+clickMessageStyle.textContent = `
+    .click-love-note {
+        position: fixed;
+        z-index: 100000;
+        pointer-events: none;
+        color: #527f98;
+        font-family: 'Playfair Display', serif;
+        font-size: 16px;
+        font-style: italic;
+        text-align: center;
+        white-space: nowrap;
+        text-shadow: 0 1px 8px rgba(255, 255, 255, 0.8);
+        animation: clickLoveFloat 2.4s ease forwards;
+    }
+
+    @keyframes clickLoveFloat {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, 8px) scale(0.85);
+        }
+        15% {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -35px) scale(0.95);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .click-love-note {
+            font-size: 13px;
+            white-space: normal;
+            width: 80%;
+        }
+    }
+`;
+
+document.head.appendChild(clickMessageStyle);
