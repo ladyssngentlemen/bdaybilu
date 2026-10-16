@@ -5,61 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#fbf6ed">
+
     <title>ily, bilu</title>
 
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    
-<!-- LOADING SCREEN: 16 TO 17 -->
-<div id="cute-loader" class="cute-loader">
-    <div class="loader-sparkles" aria-hidden="true">
-        <span>✦</span>
-        <span>✧</span>
-        <span>♡</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>·</span>
+    <!-- ========================================
+         LOADING SCREEN: 16 TO 17
+    ========================================= -->
+    <div id="cute-loader" class="cute-loader">
+
+        <div class="loader-sparkles" aria-hidden="true">
+            <span>✦</span>
+            <span>✧</span>
+            <span>♡</span>
+            <span>✧</span>
+            <span>✦</span>
+            <span>·</span>
+        </div>
+
+        <div class="age-animation" aria-label="16 menjadi 17">
+            <span class="age-one">1</span>
+
+            <span class="age-number-slot">
+                <span class="age-six">6</span>
+                <span class="age-seven">7</span>
+            </span>
+        </div>
+
+        <p class="loader-caption">sweet seventeen</p>
+        <p class="loader-text">tunggu cebental yaap..</p>
+        <p class="loader-subtext">ciee.. udah bisa buat ktp nichh</p>
+
+        <div class="loader-track">
+            <div class="loader-progress"></div>
+        </div>
+
     </div>
 
-    <div class="age-animation" aria-label="16 menjadi 17">
-        <span class="age-one">1</span>
 
-        <span class="age-number-slot">
-            <span class="age-six">6</span>
-            <span class="age-seven">7</span>
-        </span>
-    </div>
-
-    <p class="loader-caption">a little change, a new chapter</p>
-    <p class="loader-text">tunggu cebental yaap..</p>
-    <p class="loader-subtext">ciee.. udah bisa buat ktp nichh</p>
-
-    <div class="loader-track">
-        <div class="loader-progress"></div>
-    </div>
-
-</div>
-
-
-    <!-- DEKORASI -->
+    <!-- ========================================
+         DEKORASI BACKGROUND
+    ========================================= -->
     <div class="background-decoration decoration-one"></div>
     <div class="background-decoration decoration-two"></div>
 
-    <!-- HALAMAN 1: PASSWORD -->
+
+    <!-- ========================================
+         HALAMAN 1: PASSWORD
+    ========================================= -->
     <main id="password-screen" class="password-screen">
+
         <div class="password-card">
+
             <h1>Dear, Mr. Ayub</h1>
 
             <p class="password-description">
                 huh, sepertinya kamu mendapatkan sesuatu dari
-                <strong>Mrs. Ayub</strong>. ini ada sedikit pesan dari nyonya, mohon dibaca!
-                tapi sebelum itu, isi password-nya dulu, yaa
+                <strong>Mrs. Ayub</strong>. ini ada sedikit pesan dari nyonya,
+                mohon dibaca! tapi sebelum itu, isi password-nya dulu, yaa
             </p>
 
             <div class="clue-box">
@@ -68,120 +85,207 @@
             </div>
 
             <form id="pin-form" autocomplete="off">
+
                 <label class="pin-label" for="pin-1">
-                    isi disini sayangku, cintaku, bocilku ><
+                    isi disini sayangku, cintaku, bocilku &gt;&lt;
                 </label>
 
                 <div class="pin-container" id="pin-container">
-                    <input class="pin-input" id="pin-1" type="text"
-                        inputmode="numeric" pattern="[0-9]*"
-                        maxlength="1" aria-label="Angka PIN pertama"
-                        autocomplete="off" autofocus>
 
-                    <input class="pin-input" id="pin-2" type="text"
-                        inputmode="numeric" pattern="[0-9]*"
-                        maxlength="1" aria-label="Angka PIN kedua"
-                        autocomplete="off">
+                    <input
+                        class="pin-input"
+                        id="pin-1"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="1"
+                        aria-label="Angka PIN pertama"
+                        autocomplete="off"
+                        autofocus
+                    >
 
-                    <input class="pin-input" id="pin-3" type="text"
-                        inputmode="numeric" pattern="[0-9]*"
-                        maxlength="1" aria-label="Angka PIN ketiga"
-                        autocomplete="off">
+                    <input
+                        class="pin-input"
+                        id="pin-2"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="1"
+                        aria-label="Angka PIN kedua"
+                        autocomplete="off"
+                    >
+
+                    <input
+                        class="pin-input"
+                        id="pin-3"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="1"
+                        aria-label="Angka PIN ketiga"
+                        autocomplete="off"
+                    >
 
                     <span class="pin-separator" aria-hidden="true">·</span>
 
-                    <input class="pin-input" id="pin-4" type="text"
-                        inputmode="numeric" pattern="[0-9]*"
-                        maxlength="1" aria-label="Angka PIN keempat"
-                        autocomplete="off">
+                    <input
+                        class="pin-input"
+                        id="pin-4"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="1"
+                        aria-label="Angka PIN keempat"
+                        autocomplete="off"
+                    >
 
-                    <input class="pin-input" id="pin-5" type="text"
-                        inputmode="numeric" pattern="[0-9]*"
-                        maxlength="1" aria-label="Angka PIN kelima"
-                        autocomplete="off">
+                    <input
+                        class="pin-input"
+                        id="pin-5"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="1"
+                        aria-label="Angka PIN kelima"
+                        autocomplete="off"
+                    >
 
-                    <input class="pin-input" id="pin-6" type="text"
-                        inputmode="numeric" pattern="[0-9]*"
-                        maxlength="1" aria-label="Angka PIN keenam"
-                        autocomplete="off">
+                    <input
+                        class="pin-input"
+                        id="pin-6"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="1"
+                        aria-label="Angka PIN keenam"
+                        autocomplete="off"
+                    >
+
                 </div>
 
                 <p id="pin-message" class="pin-message" aria-live="polite">
                     awas aja kalau salah!
                 </p>
 
-                <button class="primary-button unlock-button" type="submit">
+                <button
+                    class="primary-button unlock-button"
+                    type="submit"
+                >
                     unlock your surprise
                 </button>
+
             </form>
 
             <p class="tiny-note">made with a little bit of love.</p>
+
         </div>
+
     </main>
 
-    <!-- AREA CERITA: HALAMAN 2-6 -->
+
+    <!-- ========================================
+         AREA CERITA: 5 HALAMAN
+    ========================================= -->
     <main id="story-app" class="story-app hidden">
 
+        <!-- HEADER -->
         <header class="app-header">
-            <a href="#" class="brand" id="brand-link">Dear Mr. Ayub</a>
+
+            <a href="#" class="brand" id="brand-link">
+                Dharma's Birthday
+            </a>
 
             <div class="header-right">
+
                 <span id="page-counter">01 / 05</span>
 
-                <button id="music-button" class="music-button"
-                    type="button" aria-label="Putar atau hentikan musik"
-                    title="Music">
+                <button
+                    id="music-button"
+                    class="music-button"
+                    type="button"
+                    aria-label="Putar atau hentikan musik"
+                    title="Music"
+                >
                     ♫
                 </button>
+
             </div>
+
         </header>
 
+
+        <!-- PROGRESS BAR -->
         <div class="progress-track">
             <div id="progress-bar" class="progress-bar"></div>
         </div>
 
-        <!-- HALAMAN 2: PEMBUKA -->
+
+        <!-- ====================================
+             HALAMAN 1: PEMBUKA
+        ===================================== -->
         <section class="story-page active" data-page="0">
+
             <div class="story-content welcome-content">
 
-                <h2>A little word,<br><span>just for you.</span></h2>
+                <h2>
+                    A little word,<br>
+                    <span>just for you.</span>
+                </h2>
 
                 <div class="short-line"></div>
 
                 <p class="story-paragraph">
-                    BENTAR BENTAR.. EKHEM, sweet seventeen agii manusia favoritku!
-                    jadi, alasan kenapa ada dua hadiah itu karena,
-                    ini adalah kedua kalinya aku ngerayain hari spesial
-                    bocilnya aku heheheee. bocilnya aku suda 17 tahun
-                    huhuu.. oh iyaa, ada musiknya lhoo sudah kamu play?? PLAY DULU NANTI
-                    AKU MARAH NIHH!! hum yauda deh
+                    BENTAR BENTAR.. EKHEM, sweet seventeen agii manusia
+                    favoritku! jadi, alasan kenapa ada dua hadiah itu
+                    karena, ini adalah kedua kalinya aku ngerayain hari
+                    spesial bocilnya aku heheheee. bocilnya aku suda 17
+                    tahun huhuu.. oh iyaa, ada musiknya lhoo sudah kamu
+                    play?? PLAY DULU NANTI AKU MARAH NIHH!! hum yauda deh
                     lanjut kuyy, kamu pasti penasaran :pp
                 </p>
 
                 <p class="handwritten">udah siap belum?</p>
 
-                <button class="primary-button next-button" type="button">
+                <button
+                    class="primary-button next-button"
+                    type="button"
+                >
                     saya siap kak
                 </button>
+
             </div>
 
             <span class="page-decoration">01</span>
+
         </section>
 
-        <!-- HALAMAN 3: DIMOO -->
-        <section class="story-page" data-page="1">
-            <div class="gift-layout">
-                <div class="gift-image-wrap">
-                    <img src="assets/dimoo.jpg"
-                        alt="DIMOO The Missing Day Series"
-                        class="gift-image">
 
-                    <span class="image-caption">a tiny little friend</span>
+        <!-- ====================================
+             HALAMAN 2: DIMOO
+        ===================================== -->
+        <section class="story-page" data-page="1">
+
+            <div class="gift-layout">
+
+                <div class="gift-image-wrap">
+
+                    <img
+                        src="assets/dimoo.jpg"
+                        alt="DIMOO The Missing Day Series"
+                        class="gift-image"
+                    >
+
+                    <span class="image-caption">
+                        a tiny little friend
+                    </span>
+
                 </div>
 
                 <div class="gift-text">
 
-                    <p class="gift-subtitle">DIMOO — The Missing Day Series</p>
+                    <p class="gift-subtitle">
+                        DIMOO — The Missing Day Series
+                    </p>
 
                     <div class="short-line"></div>
 
@@ -194,131 +298,244 @@
                     </p>
 
                     <p class="story-paragraph">
-                        if there were an eighth day, i hope it would be a day where you could finally slow down.
+                        if there were an eighth day, i hope it would be
+                        a day where you could finally slow down.
 
-                        a day with no deadlines, no worries, and no pressure to do anything at all. just a little space for you to breathe, rest, and enjoy the things that make you happy.
+                        a day with no deadlines, no worries, and no
+                        pressure to do anything at all. just a little
+                        space for you to breathe, rest, and enjoy the
+                        things that make you happy.
 
-                        and if i could wish for something, i'd wish to spend some of those quiet moments with you. because not every day has to be extraordinary to be meaningful. sometimes, all we need is a little more time to feel okay again.
+                        and if i could wish for something, i'd wish to
+                        spend some of those quiet moments with you.
+                        because not every day has to be extraordinary
+                        to be meaningful. sometimes, all we need is
+                        a little more time to feel okay again.
 
-                        so, bilu, whenever the world feels a little too loud, i hope this reminds you that you deserve a day just for yourself, too.
+                        so, dharma, whenever the world feels a little
+                        too loud, i hope this reminds you that you
+                        deserve a day just for yourself, too.
                     </p>
 
                     <p class="story-paragraph">
-                        dan ya, sekarang kamu punya satu benda lucu
-                        yang bisa kamu simpan emm, mungkin di meja PC kamu?? wkwkwk. jangan sampai hilang,
-                        yaa. nanti aku mayah dan syediih huhuu :')
+                        dan yap, sekarang kamu punya satu benda lucu
+                        yang bisa kamu simpan emm, mungkin di meja PC
+                        kamu?? wkwkwk. jangan sampai hilang, yaa.
+                        nanti aku mayah dan syedih huhuu :')
                     </p>
 
-                    <p class="handwritten">i love you 3000 bebee</p>
+                    <p class="handwritten">
+                        i love you 3000 bebee
+                    </p>
+
                 </div>
+
             </div>
 
             <span class="page-decoration">02</span>
+
         </section>
 
-        <!-- HALAMAN 4: GARDENIA -->
-        <section class="story-page" data-page="2">
-            <div class="gift-layout gardenia-layout">
-                <div class="gift-image-wrap">
-                    <img src="assets/gardenia.jpg"
-                        alt="LEGO Gardenia flower"
-                        class="gift-image">
 
-                    <span class="image-caption">a flower made to stay</span>
+        <!-- ====================================
+             HALAMAN 3: GARDENIA
+        ===================================== -->
+        <section class="story-page" data-page="2">
+
+            <div class="gift-layout gardenia-layout">
+
+                <div class="gift-image-wrap">
+
+                    <img
+                        src="assets/gardenia.jpg"
+                        alt="LEGO Gardenia flower"
+                        class="gift-image"
+                    >
+
+                    <span class="image-caption">
+                        a flower made to stay
+                    </span>
+
                 </div>
 
                 <div class="gift-text">
 
-                    <p class="gift-subtitle">Flower Bricks — Gardenia</p>
+                    <p class="gift-subtitle">
+                        Flower Bricks — Gardenia
+                    </p>
 
                     <div class="short-line"></div>
 
                     <p class="story-paragraph">
-                        emm.. BEBE AKU GATAU MAU MULAI KALIMAT INI GIMANA.
-                        langsung aja yaa, i chose gardenias because their meaning reminded me of us,
-                        of the kind of love i hope we can keep growing together. there's something so beautiful about these flowers, and somehow, they made me think of our relationship.
-                        and well, there's also the little coincidence that gardenia starts with the letter G.
-                        but honestly, there's another reason. i wanted to give you flowers, because i think boys deserve flowers too. you deserve to receive something beautiful, just because you exist, just because you're you, and just because you mean so much to me.
-                        so here's a little flower for you, bilu. one that won't wither, just like the little memories i hope we'll keep collecting together.
+                        emm.. BEBE AKU GATAU MAU MULAI KALIMAT INI
+                        GIMANA. langsung aja yaa, i chose gardenias
+                        because their meaning reminded me of us,
+                        of the kind of love i hope we can keep growing
+                        together. there's something so beautiful
+                        about these flowers, and somehow, they made
+                        me think of our relationship. and well,
+                        there's also the little coincidence that
+                        gardenia starts with the letter G.
+                    </p>
+
+                    <p class="story-paragraph">
+                        but honestly, there's another reason. i wanted
+                        to give you flowers, because i think boys
+                        deserve flowers too. you deserve to receive
+                        something beautiful, just because you exist,
+                        just because you're you, and just because you
+                        mean so much to me.
+
+                        so here's a little flower for you, bilu.
+                        one that won't wither, just like the little
+                        memories i hope we'll keep collecting together.
                     </p>
 
                     <p class="story-paragraph">
                         semoga bunga ini bisa jadi pengingat kecil
-                        tentang hal-hal baik yang ingin kita rawat yaa, sayang!
+                        tentang hal-hal baik yang ingin kita rawat
+                        yaa, sayang!
                     </p>
 
-                    <p class="handwritten">i love you in every universe!</p>
+                    <p class="handwritten">
+                        i love you in every universe!
+                    </p>
+
                 </div>
+
             </div>
 
             <span class="page-decoration">03</span>
+
         </section>
 
-        <!-- HALAMAN 5: PENUTUP SINGKAT -->
-        <section class="story-page" data-page="3">
-            <div class="story-content closing-content">
 
-                <h2>Another<br><span>Love Letter</span></h2>
+        <!-- ====================================
+             HALAMAN 4: ANOTHER LOVE LETTER
+        ===================================== -->
+        <section class="story-page letter-page" data-page="3">
 
-                <div class="short-line"></div>
+            <div class="letter-content">
 
-                <p class="story-paragraph">
-                    i know these are just little things, but i hope they remind you of
-                    something bigger: that somewhere in this world, there's someone who thinks of you in the smallest moments and wants to make you feel loved in the simplest ways.
-                    you don't have to do anything special to deserve it, bilu.
-                    you don't have to be okay all the time, either. i'm just glad i get to know you, to learn more about you, and to collect little memories with you along the way.
-                    and if there's one thing i hope you take from all of this, it's that you are loved. more than these little gifts could ever explain.
-                </p>
+                <div class="letter-paper">
 
-                <p class="story-paragraph">
-                    semoga kamu suka, yaa bebee. i love you 7.4 quintillion earth.
-                </p>
+                    <!-- DEKORASI SURAT -->
+                    <span class="letter-stamp" aria-hidden="true">
+                        ♡
+                    </span>
 
-                <button class="primary-button next-button" type="button">
+                    <h2 class="letter-title">
+                        Another<br>
+                        <span>Love Letter</span>
+                    </h2>
+
+                    <div class="letter-divider">
+                        <span>✦</span>
+                    </div>
+
+                    <p class="letter-greeting">
+                        dear, bilu.
+                    </p>
+
+                    <!--
+                        TEKS ASLI DISIMPAN DI SINI.
+                        script.js AKAN MENJALANKAN ANIMASI MENGETIK.
+                    -->
+                    <p class="story-paragraph typing-text" id="letter-text">i know these are just little things, but i hope they remind you of something bigger: that somewhere in this world, there's someone who thinks of you in the smallest moments and wants to make you feel loved in the simplest ways. you don't have to do anything special to deserve it, bilu. you don't have to be okay all the time, either. i'm just glad i get to know you, to learn more about you, and to collect little memories with you along the way. and if there's one thing i hope you take from all of this, it's that you are loved. more than these little gifts could ever explain.</p>
+
+                    <!-- TANDA TANGAN -->
+                    <p class="letter-signature" id="letter-signature">
+                        with love,<br>
+                        <span>cenja</span>
+                    </p>
+
+                    <!-- CATATAN KECIL -->
+                    <div class="letter-bottom">
+                        <span>
+                            tau ga si be.. aku kangen sebenarnya huhu,
+                            kamu ninggalin aku di wa untuk baca ini
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- TOMBOL SETELAH SURAT SELESAI DIKETIK -->
+                <button
+                    class="primary-button next-button letter-next-button"
+                    id="letter-next-button"
+                    type="button"
+                >
                     next kaka cantik
                 </button>
+
             </div>
 
             <span class="page-decoration">04</span>
+
         </section>
 
-        <!-- HALAMAN 6: SATU FOTO -->
+
+        <!-- ====================================
+             HALAMAN 5: FOTO PENUTUP
+        ===================================== -->
         <section class="story-page final-page" data-page="4">
+
             <div class="final-content">
-                <p class="eyebrow">segitu aja si bebee, hehehee</p>
 
                 <div class="final-photo-frame">
+
                     <div class="photo-tape"></div>
 
-                    <img src="assets/us.jpeg"
+                    <img
+                        src="assets/us.jpeg"
                         alt="A photo of us"
-                        class="final-photo">
+                        class="final-photo"
+                    >
+
                 </div>
 
-                <h2 class="final-message">i love you, bilu&lt;3</h2>
+                <h2 class="final-message">
+                    i love you, bilu&lt;3
+                </h2>
 
                 <p class="final-caption">
-                    yah bebe.. tahun ini kamu ga dapet tanda tangan artis skaju,
-                    gapapa lah yaa. xixixixi
+                    yah bebe.. tahun ini kamu ga dapet tanda tangan
+                    artis skaju, gapapa lah yaa. xixixixi
                 </p>
 
-                <button class="restart-button" id="restart-button"
-                    type="button">
+                <button
+                    class="restart-button"
+                    id="restart-button"
+                    type="button"
+                >
                     read it again ↺
                 </button>
+
             </div>
 
             <span class="page-decoration">05</span>
+
         </section>
 
-        <!-- NAVIGASI -->
+
+        <!-- ====================================
+             NAVIGASI HALAMAN
+        ===================================== -->
         <footer class="app-navigation">
-            <button id="back-button" class="nav-button back-button"
-                type="button">
+
+            <button
+                id="back-button"
+                class="nav-button back-button"
+                type="button"
+            >
                 back
             </button>
 
-            <div class="page-dots" id="page-dots" aria-label="Progress halaman">
+            <div
+                class="page-dots"
+                id="page-dots"
+                aria-label="Progress halaman"
+            >
                 <span class="page-dot active"></span>
                 <span class="page-dot"></span>
                 <span class="page-dot"></span>
@@ -326,19 +543,28 @@
                 <span class="page-dot"></span>
             </div>
 
-            <button id="next-button" class="nav-button next-nav-button"
-                type="button">
+            <button
+                id="next-button"
+                class="nav-button next-nav-button"
+                type="button"
+            >
                 next
             </button>
+
         </footer>
 
     </main>
 
-    <!-- MUSIK -->
+
+    <!-- ========================================
+         BACKGROUND MUSIC
+    ========================================= -->
     <audio id="background-music" loop preload="none">
         <source src="assets/music.mp3" type="audio/mpeg">
     </audio>
 
+
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>

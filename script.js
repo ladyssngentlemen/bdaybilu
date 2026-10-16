@@ -50,7 +50,6 @@ function clearPin() {
 
 pinInputs.forEach((input, index) => {
 
-    // Hanya menerima satu angka dalam setiap kotak.
     input.addEventListener("input", () => {
         input.value = input.value.replace(/\D/g, "").slice(-1);
 
@@ -63,7 +62,6 @@ pinInputs.forEach((input, index) => {
         showPinMessage("kalau salah.. tidur di luar!");
     });
 
-    // Backspace kembali ke kotak sebelumnya.
     input.addEventListener("keydown", event => {
         if (
             event.key === "Backspace" &&
@@ -73,7 +71,6 @@ pinInputs.forEach((input, index) => {
             pinInputs[index - 1].focus();
         }
 
-        // Berpindah kotak menggunakan tombol panah.
         if (event.key === "ArrowLeft" && index > 0) {
             pinInputs[index - 1].focus();
         }
@@ -86,7 +83,6 @@ pinInputs.forEach((input, index) => {
         }
     });
 
-    // Bisa paste enam angka sekaligus.
     input.addEventListener("paste", event => {
         event.preventDefault();
 
@@ -141,8 +137,9 @@ const welcomeNextButton = document.querySelector(
     ".welcome-content .next-button"
 );
 
-const closingNextButton = document.querySelector(
-    ".closing-content .next-button"
+// PERBAIKAN: ambil tombol surat berdasarkan ID yang benar.
+const closingNextButton = document.getElementById(
+    "letter-next-button"
 );
 
 let currentPage = 0;
@@ -164,7 +161,7 @@ function showPage(index, direction = "next") {
         }
     });
 
-    // Nomor halaman konten: 01 / 05 sampai 05 / 05.
+    // Nomor halaman.
     pageCounter.textContent =
         `${String(currentPage + 1).padStart(2, "0")} / ` +
         `${String(pages.length).padStart(2, "0")}`;
@@ -178,10 +175,10 @@ function showPage(index, direction = "next") {
         dot.classList.toggle("active", dotIndex === currentPage);
     });
 
-    // Tombol back tidak bisa dipakai di halaman pertama.
+    // Tombol back.
     backButton.disabled = currentPage === 0;
 
-    // Tombol navigasi next tanpa tanda panah.
+    // Tombol next di navigasi bawah.
     if (currentPage === pages.length - 1) {
         nextButton.textContent = "the end ♡";
         nextButton.disabled = true;
@@ -190,7 +187,7 @@ function showPage(index, direction = "next") {
         nextButton.disabled = false;
     }
 
-    // Sembunyikan navigasi bawah pada halaman 01 dan 04.
+    // Sembunyikan next bawah pada halaman pertama dan halaman surat.
     const hideNextButton = currentPage === 0 || currentPage === 3;
 
     nextButton.style.visibility = hideNextButton ? "hidden" : "visible";
@@ -198,7 +195,7 @@ function showPage(index, direction = "next") {
     nextButton.disabled =
         hideNextButton || currentPage === pages.length - 1;
 
-    // Tombol back juga disembunyikan pada halaman pertama.
+    // Sembunyikan back di halaman pertama.
     backButton.style.visibility =
         currentPage === 0 ? "hidden" : "visible";
 
@@ -213,21 +210,23 @@ function showPage(index, direction = "next") {
    EVENT TOMBOL NAVIGASI
 ========================================= */
 
-// Tombol next di navigasi bawah.
+// Next di navigasi bawah.
 nextButton.addEventListener("click", () => {
     showPage(currentPage + 1, "next");
 });
 
-// Tombol "saya siap kak" di halaman 01.
+// Tombol di halaman pembuka.
 if (welcomeNextButton) {
-    welcomeNextButton.addEventListener("click", () => {
+    welcomeNextButton.addEventListener("click", event => {
+        event.preventDefault();
         showPage(1, "next");
     });
 }
 
-// Tombol "next kaka cantik" di halaman 04.
+// PERBAIKAN: tombol "next kaka cantik" menuju halaman terakhir.
 if (closingNextButton) {
-    closingNextButton.addEventListener("click", () => {
+    closingNextButton.addEventListener("click", event => {
+        event.preventDefault();
         showPage(4, "next");
     });
 }
@@ -237,13 +236,15 @@ backButton.addEventListener("click", () => {
     showPage(currentPage - 1, "back");
 });
 
-// Klik logo membawa kembali ke halaman cerita pertama.
-brandLink.addEventListener("click", event => {
-    event.preventDefault();
-    showPage(0, "back");
-});
+// Logo kembali ke halaman pertama.
+if (brandLink) {
+    brandLink.addEventListener("click", event => {
+        event.preventDefault();
+        showPage(0, "back");
+    });
+}
 
-// Tombol untuk membaca ulang dari awal.
+// Restart cerita.
 restartButton.addEventListener("click", () => {
     showPage(0, "back");
 });
@@ -297,7 +298,7 @@ pinForm.addEventListener("submit", event => {
             "please bilang kamu cuman salah ketik..",
             "nope! coba ingat-ingat lagi!",
             "well well well",
-            "gilang dharma pranata ayub. tidur di luar!",
+            "gilang dharma pranata ayub. tidur di luar!"
         ];
 
         const randomMessage = wrongPinMessages[
@@ -325,7 +326,6 @@ const backgroundMusic = document.getElementById("background-music");
 let isMusicPlaying = false;
 
 musicButton.addEventListener("click", async () => {
-
     if (!isMusicPlaying) {
         try {
             await backgroundMusic.play();
@@ -359,9 +359,9 @@ backgroundMusic.addEventListener("error", () => {
     musicButton.classList.remove("playing");
 });
 
+
 /* =========================================
    BILU'S LITTLE MAGIC ♡
-   Confetti, floating hearts & sparkles
 ========================================= */
 
 const magicStyle = document.createElement("style");
@@ -470,14 +470,17 @@ function biluConfetti(amount = 85) {
             colors[Math.floor(Math.random() * colors.length)];
 
         piece.style.fontSize = Math.random() * 13 + 9 + "px";
+
         piece.style.setProperty(
             "--duration",
             Math.random() * 2 + 2 + "s"
         );
+
         piece.style.setProperty(
             "--drift",
             (Math.random() - .5) * 180 + "px"
         );
+
         piece.style.setProperty(
             "--rotation",
             Math.random() * 600 + "deg"
@@ -510,6 +513,7 @@ function biluFloatingHearts(amount = 12) {
             colors[Math.floor(Math.random() * colors.length)];
 
         heart.style.fontSize = Math.random() * 17 + 12 + "px";
+
         heart.style.setProperty(
             "--duration",
             Math.random() * 5 + 6 + "s"
@@ -545,9 +549,11 @@ document.addEventListener("pointermove", event => {
 
     sparkle.style.left = event.clientX + "px";
     sparkle.style.top = event.clientY + "px";
+
     sparkle.style.color = ["#83abc9", "#e8a6b9", "#d5b46b"][
         Math.floor(Math.random() * 3)
     ];
+
     sparkle.style.fontSize = Math.random() * 9 + 12 + "px";
 
     document.body.appendChild(sparkle);
@@ -615,8 +621,8 @@ function stopBiluHearts() {
 
 startBiluHearts();
 
-document.querySelectorAll(".story-page img").forEach((photo) => {
-    photo.addEventListener("click", (event) => {
+document.querySelectorAll(".story-page img").forEach(photo => {
+    photo.addEventListener("click", event => {
         const heart = document.createElement("span");
 
         heart.textContent = ["♡", "♥", "୨୧", "✧"][
@@ -640,6 +646,7 @@ document.querySelectorAll(".story-page img").forEach((photo) => {
 });
 
 const heartStyle = document.createElement("style");
+
 heartStyle.textContent = `
     @keyframes heartPop {
         0% {
@@ -656,7 +663,9 @@ heartStyle.textContent = `
         }
     }
 `;
+
 document.head.appendChild(heartStyle);
+
 
 /* ♡ ROMANTIC WORDS ON CLICK */
 
@@ -664,15 +673,14 @@ const clickMessages = [
     "mwaah",
     "i love you sayang",
     "aku jatuh suka~",
-    "cayang bebecuu",
-   
+    "cayang bebecuu"
 ];
 
-document.addEventListener("click", (event) => {
-    // Abaikan klik pada elemen input agar tidak mengganggu PIN
+document.addEventListener("click", event => {
     if (event.target.closest("input, textarea, select")) return;
 
     const note = document.createElement("span");
+
     note.className = "click-love-note";
     note.textContent =
         clickMessages[Math.floor(Math.random() * clickMessages.length)];
@@ -685,7 +693,9 @@ document.addEventListener("click", (event) => {
     setTimeout(() => note.remove(), 2400);
 });
 
+
 /* STYLE TULISAN KLIK */
+
 const clickMessageStyle = document.createElement("style");
 
 clickMessageStyle.textContent = `
@@ -749,14 +759,12 @@ document.head.appendChild(clickMessageStyle);
     function startLoadingAnimation() {
         loader.classList.add("is-animating");
 
-        // Animasi angka selesai pada sekitar 3.15 detik.
-        // Loading ditahan sebentar agar angka 17 terlihat.
         const totalDuration = reducedMotion ? 700 : 3900;
 
-        window.setTimeout(function () {
+        window.setTimeout(() => {
             loader.classList.add("loader-done");
 
-            window.setTimeout(function () {
+            window.setTimeout(() => {
                 loader.remove();
             }, 700);
         }, totalDuration);
@@ -769,4 +777,100 @@ document.head.appendChild(clickMessageStyle);
             once: true
         });
     }
+})();
+
+
+/* =========================================
+   ANOTHER LOVE LETTER — TYPEWRITER EFFECT
+========================================= */
+
+(function initLoveLetter() {
+    const letterPage = document.querySelector(
+        '.story-page[data-page="3"]'
+    );
+
+    const letterText = document.getElementById("letter-text");
+    const signature = document.getElementById("letter-signature");
+    const letterNextButton = document.getElementById("letter-next-button");
+
+    if (!letterPage || !letterText || !signature || !letterNextButton) {
+        return;
+    }
+
+    const fullText = letterText.textContent
+        .replace(/\s+/g, " ")
+        .trim();
+
+    let started = false;
+    let index = 0;
+    let typingTimer = null;
+    let signatureTimer = null;
+    let buttonTimer = null;
+
+    letterText.textContent = "";
+    letterText.classList.add("typing");
+
+    signature.classList.remove("visible");
+    letterNextButton.classList.remove("visible");
+
+    function typeLetter() {
+        if (!letterPage.classList.contains("active")) {
+            clearTimeout(typingTimer);
+            return;
+        }
+
+        if (index < fullText.length) {
+            const character = fullText.charAt(index);
+
+            letterText.textContent += character;
+            index++;
+
+            let delay = 23;
+
+            if (character === ",") {
+                delay = 230;
+            } else if (character === ".") {
+                delay = 420;
+            } else if (character === ":") {
+                delay = 280;
+            }
+
+            typingTimer = setTimeout(typeLetter, delay);
+
+        } else {
+            letterText.classList.remove("typing");
+
+            signatureTimer = setTimeout(() => {
+                signature.classList.add("visible");
+            }, 350);
+
+            buttonTimer = setTimeout(() => {
+                letterNextButton.classList.add("visible");
+            }, 850);
+        }
+    }
+
+    function startTyping() {
+        if (started || !letterPage.classList.contains("active")) {
+            return;
+        }
+
+        started = true;
+        typingTimer = setTimeout(typeLetter, 650);
+    }
+
+    const observer = new MutationObserver(() => {
+        if (letterPage.classList.contains("active")) {
+            startTyping();
+        } else {
+            clearTimeout(typingTimer);
+        }
+    });
+
+    observer.observe(letterPage, {
+        attributes: true,
+        attributeFilter: ["class"]
+    });
+
+    startTyping();
 })();
