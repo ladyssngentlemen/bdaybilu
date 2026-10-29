@@ -180,7 +180,7 @@ function showPage(index, direction = "next") {
 
     // Tombol next di navigasi bawah.
     if (currentPage === pages.length - 1) {
-        nextButton.textContent = "the end ♡";
+        nextButton.textContent = "the end";
         nextButton.disabled = true;
     } else {
         nextButton.textContent = "next";
