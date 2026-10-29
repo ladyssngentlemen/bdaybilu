@@ -874,3 +874,4 @@ document.head.appendChild(clickMessageStyle);
 
     startTyping();
 })();
+
